@@ -1,59 +1,33 @@
-# ProyectoPrimerParcial
+# Proyecto Grupal con Angular
+Se trabajó con una ApiRest ya desplegada en Render para mejorar la experiencia al momento de visualizar el proyecto desplegado en vercel.
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.9.
+## Parcitipantes (Nombres y Apellidos) - Actuación (% porcentaje)
 
-## Development server
-
-To start a local development server, run:
-
-```bash
-ng serve
+```
+Marco Andrés Manzano Aroni "Producto Manager y Dev Full Stack" - 100%
+Andrea De Los Angeles Narvaez Moreira "Dev Frontend" - 0%
+Josué Donald Córdova Rosado "Dev Frontend"- 0%
+Rommel Cesar Cedeño Piza "Dev Frontend" - 0%
+Josselyn Stefania Cruz Borbor "Dev Frontend" - 0%
+Israel Isaac Alvarado Padilla "Dev Frontend" - 0%
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Participación de cada integrante
 
-## Code scaffolding
+```
+Marco Andrés Manzano Aroni - Despliegue de la Api Rest en render, Migrar todos los css a tailwindcss, unir las partes de cada compañero developer, mejorar la estructura del proyecto y corrección de errores.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Andrea De Los Angeles Narvaez Moreira - Desarrollo del componente Footer y su sub-componente Reseñas para visualizar las reseñas de los turistas.
 
-```bash
-ng generate component component-name
+Josué Donald Córdova Rosado - Desarrollo del componente Login para turistas y empresas.
+
+Rommel Cesar Cedeño Piza - Desarrollo del sub-componente transporte, alojamiento y actividades con su crud de operaciones y filtro.
+
+Josselyn Stefania Cruz Borbor - Desarrollo del componente Registro para turistas y empresas.
+
+Israel Isaac Alvarado Padilla - Desarrollo del componente Categorías Populares y los sub-componentes excursiones y guías turisticos con su crud y filtro.
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Json con datos desplegado en render
 
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+[Api Rest](https://api-backend-ltkx.onrender.com/)
