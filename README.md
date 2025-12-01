@@ -5,28 +5,32 @@ Se trabajó con una ApiRest ya desplegada en Render para mejorar la experiencia 
 
 ```
 Marco Andrés Manzano Aroni "Producto Manager y Dev Full Stack" - 100%
-Andrea De Los Angeles Narvaez Moreira "Dev Frontend" - 0%
-Josué Donald Córdova Rosado "Dev Frontend"- 0%
-Rommel Cesar Cedeño Piza "Dev Frontend" - 0%
 Josselyn Stefania Cruz Borbor "Dev Frontend" - 0%
+Josué Donald Córdova Rosado "Dev Frontend"- 0%
 Israel Isaac Alvarado Padilla "Dev Frontend" - 0%
+Rommel Cesar Cedeño Piza "Dev Frontend" - 0%
+Andrea De Los Angeles Narvaez Moreira "Dev Frontend" - 0%
 ```
 
 ## Participación de cada integrante
 
-```
-Marco Andrés Manzano Aroni - Despliegue de la Api Rest en render, Migrar todos los css a tailwindcss, unir las partes de cada compañero developer, mejorar la estructura del proyecto y corrección de errores.
+### Marco Andrés Manzano Aroni - Funciones
+Despliegue de la Api Rest en render, Migrar todos los css a tailwindcss, unir las partes de cada compañero developer, mejorar la estructura del proyecto y corrección de errores.
 
-Andrea De Los Angeles Narvaez Moreira - Desarrollo del componente Footer y su sub-componente Reseñas para visualizar las reseñas de los turistas.
+### Josselyn Stefania Cruz Borbor - Funciones
+Desarrollo del componente Registro para turistas y empresas.
 
-Josué Donald Córdova Rosado - Desarrollo del componente Login para turistas y empresas.
+### Josué Donald Córdova Rosado - Funciones
+Desarrollo del componente Login para turistas y empresas.
 
-Rommel Cesar Cedeño Piza - Desarrollo del sub-componente transporte, alojamiento y actividades con su crud de operaciones y filtro.
+### Israel Isaac Alvarado Padilla - Funciones
+Desarrollo del componente Categorías Populares y los sub-componentes excursiones y guías turisticos con su crud y filtro.
 
-Josselyn Stefania Cruz Borbor - Desarrollo del componente Registro para turistas y empresas.
+### Rommel Cesar Cedeño Piza - Funciones
+Desarrollo del sub-componente transporte, alojamiento y actividades con su crud de operaciones y filtro.
 
-Israel Isaac Alvarado Padilla - Desarrollo del componente Categorías Populares y los sub-componentes excursiones y guías turisticos con su crud y filtro.
-```
+### Andrea De Los Angeles Narvaez Moreira - Funciones
+Desarrollo del componente Footer y su sub-componente Reseñas para visualizar las reseñas de los turistas.
 
 ## Json con datos desplegado en render
 
