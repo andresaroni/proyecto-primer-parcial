@@ -1,4 +1,5 @@
-/* You can add global styles to this file, and also import other style files */
+@import "tailwindcss";
+
 :root{
     --texto-primario: white;
     --texto-secundario: black;
@@ -7,8 +8,6 @@
 }
 
 *{
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
     font-family: 'Erode', serif;
     text-decoration: none;
