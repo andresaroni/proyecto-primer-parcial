@@ -1,0 +1,68 @@
+<h2 mat-dialog-title>{{ titulo }}</h2>
+
+<mat-dialog-content [formGroup]="servicioForm" class="p-6">
+    <mat-form-field appearance="fill" class="w-full custom-input mb-4">
+        <mat-label>Nombre del Servicio</mat-label>
+        <mat-select formControlName="nombre">
+            <mat-option value="tour-avistamiento">Tour de Avistamiento de Ballenas</mat-option>
+            <mat-option value="traslado-aeropuerto">Traslado Aeropuerto - Ciudad</mat-option>
+            <mat-option value="clase-surf">Clase de Surf para Principiantes</mat-option>
+            <mat-option value="alojamiento-cabaña">Alojamiento Cabaña Rústica</mat-option>
+        </mat-select>
+        <mat-error *ngIf="servicioForm.get('nombre')?.hasError('required')">El nombre es obligatorio.</mat-error>
+    </mat-form-field>
+
+    <div class="grid grid-cols-2 gap-4 mb-4">
+        <mat-form-field appearance="fill" class="custom-input">
+            <mat-label>Tipo</mat-label>
+            <mat-select formControlName="tipo">
+                <mat-option value="excursion">Excursión</mat-option>
+                <mat-option value="transporte">Transporte</mat-option>
+                <mat-option value="actividad-recreativa">Actividad Recreativa</mat-option>
+                <mat-option value="alojamiento">Alojamiento</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="custom-input">
+            <mat-label>Destino</mat-label>
+            <mat-select formControlName="destino">
+                <mat-option value="puerto-lopez">Puerto López</mat-option>
+                <mat-option value="guayaquil">Guayaquil</mat-option>
+                <mat-option value="montañita">Montañita</mat-option>
+                <mat-option value="salinas">Salinas</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <div class="grid grid-cols-2 gap-4 mb-6">
+        <mat-form-field appearance="fill" class="custom-input">
+            <mat-label>Duración</mat-label>
+            <mat-select formControlName="duracion">
+                <mat-option value="4-horas">4 horas</mat-option>
+                <mat-option value="1-hora">1 hora</mat-option>
+                <mat-option value="2-horas">2 horas</mat-option>
+                <mat-option value="1-noche">1 noche</mat-option>
+                <mat-option value="personalizada">Otra...</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="custom-input">
+            <mat-label>Precio Referencial ($)</mat-label>
+            <input matInput type="number" formControlName="precioReferencial" min="0">
+            <mat-error *ngIf="servicioForm.get('precioReferencial')?.hasError('min')">El precio debe ser mayor a 0.</mat-error>
+        </mat-form-field>
+    </div>
+
+    <mat-checkbox formControlName="disponibilidad" class="py-2">
+        Servicio Disponible
+    </mat-checkbox>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end" class="pt-4">
+    <button mat-button (click)="onCancelar()">
+        Cancelar
+    </button>
+    <button mat-raised-button color="primary" [disabled]="servicioForm.invalid" (click)="onGuardar()" class="custom-save-button">
+        Guardar Servicio
+    </button>
+</mat-dialog-actions>

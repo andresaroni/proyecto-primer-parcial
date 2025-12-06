@@ -1,0 +1,79 @@
+import { Component, Inject } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+
+
+import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatSelectModule } from '@angular/material/select'; 
+
+
+@Component({
+  selector: 'app-formulario-servicio',
+  standalone: true,
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    MatSelectModule 
+  ],
+  templateUrl: './formulario-servicio.html',
+  styleUrls: ['./formulario-servicio.css']
+})
+export class FormularioServicioComponent {
+
+  servicioForm: FormGroup;
+  titulo: string;
+  esModoRapido: boolean = false;
+
+  constructor(
+    private fb: FormBuilder,
+    public dialogRef: MatDialogRef<FormularioServicioComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) {
+
+    this.esModoRapido = data && data.modoRapido === true;
+
+    if (this.esModoRapido) {
+      
+      this.titulo = 'Registro Rápido por Selección';
+      this.servicioForm = this.fb.group({
+        idBase: [null, Validators.required]
+      });
+
+    } else {
+      this.titulo = data && data.servicio ? 'Editar Servicio' : 'Registrar Nuevo Servicio';
+
+      this.servicioForm = this.fb.group({
+        nombre: ['', Validators.required],
+        tipo: ['', Validators.required],
+        destino: ['', Validators.required],
+        duracion: ['', Validators.required],
+        precioReferencial: [0, [Validators.required, Validators.min(0.01)]],
+        disponibilidad: [true, Validators.required],
+        id: [null]
+      });
+
+      if (data && data.servicio) {
+        this.servicioForm.patchValue(data.servicio);
+      }
+    }
+  }
+
+  onGuardar(): void {
+    if (this.servicioForm.valid) {
+      this.dialogRef.close(this.servicioForm.value);
+    }
+  }
+
+  onCancelar(): void {
+    this.dialogRef.close();
+  }
+}
