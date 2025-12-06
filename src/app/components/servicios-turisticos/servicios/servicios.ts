@@ -1,9 +1,9 @@
 import { Component } from '@angular/core'; 
 import { MatDialog } from '@angular/material/dialog';
-import { FormularioServicioComponent } from './formulario-servicio';
 import { MatIconModule, MatIcon } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button'; 
+import { RegistroServicio } from './registro-servicio/registro-servicio';
 
 
 export interface Servicio {
@@ -34,7 +34,7 @@ throw new Error('Method not implemented.');
   constructor(private dialog: MatDialog) {}
   
   openDialog(servicioParaEditar?: Servicio): void {
-    const dialogRef = this.dialog.open(FormularioServicioComponent, {
+    const dialogRef = this.dialog.open(RegistroServicio, {
       width: '600px',
       data: { servicio: servicioParaEditar }
     });

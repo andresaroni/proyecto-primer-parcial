@@ -1,19 +1,15 @@
-import { Component, Inject } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-
-
-import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
+import { Component, Inject } from '@angular/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatSelectModule } from '@angular/material/select'; 
-
+import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 
 @Component({
-  selector: 'app-formulario-servicio',
-  standalone: true,
+  selector: 'app-registro-servicio',
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -22,32 +18,28 @@ import { MatSelectModule } from '@angular/material/select';
     MatInputModule,
     MatButtonModule,
     MatCheckboxModule,
-    MatSelectModule 
+    MatSelectModule,
   ],
-  templateUrl: './formulario-servicio.html',
-  styleUrls: ['./formulario-servicio.css']
+  templateUrl: './registro-servicio.html',
+  styleUrl: './registro-servicio.css',
 })
-export class FormularioServicioComponent {
-
+export class RegistroServicio {
   servicioForm: FormGroup;
   titulo: string;
   esModoRapido: boolean = false;
 
   constructor(
     private fb: FormBuilder,
-    public dialogRef: MatDialogRef<FormularioServicioComponent>,
+    public dialogRef: MatDialogRef<RegistroServicio>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
-
     this.esModoRapido = data && data.modoRapido === true;
 
     if (this.esModoRapido) {
-      
       this.titulo = 'Registro Rápido por Selección';
       this.servicioForm = this.fb.group({
-        idBase: [null, Validators.required]
+        idBase: [null, Validators.required],
       });
-
     } else {
       this.titulo = data && data.servicio ? 'Editar Servicio' : 'Registrar Nuevo Servicio';
 
@@ -58,7 +50,7 @@ export class FormularioServicioComponent {
         duracion: ['', Validators.required],
         precioReferencial: [0, [Validators.required, Validators.min(0.01)]],
         disponibilidad: [true, Validators.required],
-        id: [null]
+        id: [null],
       });
 
       if (data && data.servicio) {

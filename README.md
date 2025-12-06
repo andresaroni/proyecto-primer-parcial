@@ -1,17 +1,6 @@
 # Proyecto Grupal con Angular
 Se trabajó con una ApiRest ya desplegada en Render para mejorar la experiencia al momento de visualizar el proyecto desplegado en vercel.
 
-## Parcitipantes (Nombres y Apellidos) - Actuación (% porcentaje)
-
-```
-Marco Andrés Manzano Aroni "Producto Manager y Dev Full Stack" - 100%
-Josselyn Stefania Cruz Borbor "Dev Frontend" - 0%
-Josué Donald Córdova Rosado "Dev Frontend"- 0%
-Israel Isaac Alvarado Padilla "Dev Frontend" - 0%
-Rommel Cesar Cedeño Piza "Dev Frontend" - 0%
-Andrea De Los Angeles Narvaez Moreira "Dev Frontend" - 0%
-```
-
 ## Participación de cada integrante
 
 ### Marco Andrés Manzano Aroni - Funciones
@@ -33,5 +22,4 @@ Desarrollo del sub-componente transporte, alojamiento y actividades con su crud 
 Desarrollo del componente Footer y su sub-componente Reseñas para visualizar las reseñas de los turistas.
 
 ## Json con datos desplegado en render
-
 [Api Rest](https://api-backend-ltkx.onrender.com/)
