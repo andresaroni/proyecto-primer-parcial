@@ -1,258 +1,68 @@
-<div class="flex space-x-4">
+<app-navbar/>
 
-    <button mat-raised-button color="primary" (click)="openDialog()">
-        Registrar Servicio
-    </button>
+<div class="w-full grid place-items-start gap-6 px-20 pt-6">
+
+    <h1 class="text-center mx-auto font-semibold text-[2rem]">Servicios Turisticos</h1>
+
+    <button class="bg-(--color-secundario) text-white px-5 py-2 rounded-lg font-medium cursor-pointer hover:bg-[#282828]" routerLink="crud-servicios">Crud Servicios</button>
+
+    @if (serviciosTuristicos.length === 0) {
+        <p class="text-center mx-auto font-medium text-[1.5rem]">Ups...</p>
+        <p class="text-center mx-auto font-medium text-[1.5rem]">No hay Servicios Turisticos para mostrar </p>
+    }@else {
+        <div class="w-full flex place-content-center gap-4">
+            @for (servicioTuri of serviciosTuristicos; track $index) {
+                <div class="max-w-xs bg-white border border-gray-200 rounded-xl shadow-lg overflow-hidden">
+                    <div class="relative">
+                        <img 
+                            class="w-full h-40 object-cover" 
+                            [src]="servicioTuri.imagen" 
+                            [alt]="servicioTuri.nombre">
+                    </div> 
+                    
+                    <div class="p-4">
+                        
+                        <h2 class="text-xl font-bold text-gray-800 mb-1">
+                            {{servicioTuri.nombre}}
+                        </h2>
+
+                        <p class="text-gray-600 mb-3 text-xs leading-tight">
+                            {{servicioTuri.descripcion}}
+                        </p>
+
+                        <div class="space-y-1"> 
+                            
+                            <div class="flex justify-between items-start pt-1 border-t border-gray-100">
+                                <span class="text-xs font-medium text-gray-500">Tipo / Destino:</span>
+                                <span class="text-xs font-semibold text-gray-800 text-right">{{servicioTuri.tipo}} / {{servicioTuri.destino}}</span>
+                            </div>
+
+                            <div class="flex justify-between items-start">
+                                <span class="text-xs font-medium text-gray-500">Duración:</span>
+                                <span class="text-xs font-semibold text-gray-800">{{servicioTuri.duracion}}</span>
+                            </div>
+
+                        </div>
+
+                        <hr class="my-2 border-gray-200">
+
+                        <div class="flex justify-between items-center">
+                            <div class="text-left">
+                                <span class="text-xs font-medium text-gray-500 block">Precio Referencial:</span>
+                                <span class="text-2xl font-extrabold text-green-600">${{servicioTuri.precioReferencial}}</span>
+                            </div>
+
+                            <div class="text-right">
+                                <span class="text-xs font-medium block">Disponibilidad:</span>
+                                <span class="text-sm font-bold text-green-600">Disponible</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+
 </div>
 
-<div class="flex space-x-4">
-    <div *ngFor="let servicio of servicios" class="max-w-xs bg-white border border-gray-200 rounded-xl shadow-lg overflow-hidden">
-        
-        <div class="p-4">
-            
-            <h2 class="text-xl font-bold text-gray-800 mb-1">
-                {{ servicio.nombre }}
-            </h2>
-
-            <p class="text-gray-600 mb-3 text-xs leading-tight">
-                {{ servicio.descripcion }}
-            </p>
-            
-            <hr class="my-2 border-gray-200">
-            
-            <div class="flex justify-between items-center">
-                <div class="text-left">
-                    <span class="text-xs font-medium text-gray-500 block">Precio Referencial:</span>
-                    <span class="text-2xl font-extrabold text-green-600">${{ servicio.precioReferencial }}</span>
-                </div>
-
-                <div class="flex space-x-2">
-                    <button mat-icon-button color="accent" (click)="openDialog(servicio)">
-                        <mat-icon>edit</mat-icon>
-                    </button>
-                    <button mat-icon-button color="warn" (click)="eliminarServicio(servicio.id)">
-                        <mat-icon>delete</mat-icon>
-                    </button>
-                </div>
-
-            </div>
-
-        </div>
-    </div>
-</div>
-
-  <!-- Crear un button con los estilos predeterminados del proyectos para registrar un servicio -->
-  <!-- Trabajar el registro con modal, usar angular material -->
-
-<div class="flex space-x-4">
-    
-    <div class="max-w-xs bg-white border border-gray-200 rounded-xl shadow-lg overflow-hidden">
-        
-        <div class="relative">
-            <img 
-                class="w-full h-40 object-cover" 
-                src="/assets/Avistamiento.png" 
-                alt="Imagen del Tour de Avistamiento de Ballenas">
-        </div> 
-        
-        <div class="p-4">
-            
-            <h2 class="text-xl font-bold text-gray-800 mb-1">
-                Tour de Avistamiento de Ballenas
-            </h2>
-
-            <p class="text-gray-600 mb-3 text-xs leading-tight">
-                Una emocionante excursión de medio día para observar ballenas jorobadas en su ruta migratoria.
-            </p>
-
-            <div class="space-y-1"> 
-                
-                <div class="flex justify-between items-start pt-1 border-t border-gray-100">
-                    <span class="text-xs font-medium text-gray-500">Tipo / Destino:</span>
-                    <span class="text-xs font-semibold text-gray-800 text-right">Excursión / Puerto López</span>
-                </div>
-
-                <div class="flex justify-between items-start">
-                    <span class="text-xs font-medium text-gray-500">Duración:</span>
-                    <span class="text-xs font-semibold text-gray-800">4 horas</span>
-                </div>
-
-                <div class="flex justify-between items-start pb-1">
-                    <span class="text-xs font-medium text-gray-500">ID:</span>
-                    <span class="text-xs font-semibold text-gray-800">1</span>
-                </div>
-
-            </div>
-
-            <hr class="my-2 border-gray-200">
-
-            <div class="flex justify-between items-center">
-                <div class="text-left">
-                    <span class="text-xs font-medium text-gray-500 block">Precio Referencial:</span>
-                    <span class="text-2xl font-extrabold text-green-600">$65</span>
-                </div>
-
-                <div class="text-right">
-                    <span class="text-xs font-medium block">Disponibilidad:</span>
-                    <span class="text-sm font-bold text-green-600">Disponible</span>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <div class="max-w-xs bg-white border border-gray-200 rounded-xl shadow-lg overflow-hidden">
-
-        <div class="relative">
-            <img 
-                class="w-full h-40 object-cover" 
-                src="/assets/Traslado.png" 
-                alt="Imagen de Traslado Aeropuerto - Ciudad">
-        </div> 
-        
-        <div class="p-4"> 
-            
-            <h2 class="text-xl font-bold text-gray-800 mb-1">
-                Traslado Aeropuerto - Ciudad
-            </h2>
-
-            <p class="text-gray-600 mb-3 text-xs leading-tight"> 
-                Servicio de transporte privado y seguro desde el aeropuerto principal al centro de la ciudad.
-            </p>
-
-            <div class="space-y-1"> 
-                <div class="flex justify-between items-start pt-1 border-t border-gray-100">
-                    <span class="text-xs font-medium text-gray-500">Tipo / Destino:</span>
-                    <span class="text-xs font-semibold text-gray-800 text-right">Transporte / Guayaquil</span>
-                </div>
-
-                <div class="flex justify-between items-start">
-                    <span class="text-xs font-medium text-gray-500">Duración:</span>
-                    <span class="text-xs font-semibold text-gray-800">1 hora</span>
-                </div>
-
-                <div class="flex justify-between items-start pb-1">
-                    <span class="text-xs font-medium text-gray-500">ID:</span>
-                    <span class="text-xs font-semibold text-gray-800">2</span>
-                </div>
-            </div>
-
-            <hr class="my-2 border-gray-200">
-
-            <div class="flex justify-between items-center">
-                <div class="text-left">
-                    <span class="text-xs font-medium text-gray-500 block">Precio Referencial:</span>
-                    <span class="text-2xl font-extrabold text-green-600">$30</span>
-                </div>
-
-                <div class="text-right">
-                    <span class="text-xs font-medium block">Disponibilidad:</span>
-                    <span class="text-sm font-bold text-green-600">Disponible</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="max-w-xs bg-white border border-gray-200 rounded-xl shadow-lg overflow-hidden">
-
-        <div class="relative">
-            <img 
-                class="w-full h-40 object-cover" 
-                src="/assets/Clasedesurf.png" 
-                alt="Imagen de Clase de Surf para Principiantes">
-        </div> 
-        
-        <div class="p-4"> 
-            
-            <h2 class="text-xl font-bold text-gray-800 mb-1">
-                Clase de Surf para Principiantes
-            </h2>
-
-            <p class="text-gray-600 mb-3 text-xs leading-tight"> 
-                Lección de 2 horas con instructor certificado en la playa de Montañita.
-            </p>
-
-            <div class="space-y-1"> 
-                <div class="flex justify-between items-start pt-1 border-t border-gray-100">
-                    <span class="text-xs font-medium text-gray-500">Tipo / Destino:</span>
-                    <span class="text-xs font-semibold text-gray-800 text-right">Actividad Recreativa / Montañita</span>
-                </div>
-
-                <div class="flex justify-between items-start">
-                    <span class="text-xs font-medium text-gray-500">Duración:</span>
-                    <span class="text-xs font-semibold text-gray-800">2 horas</span>
-                </div>
-
-                <div class="flex justify-between items-start pb-1">
-                    <span class="text-xs font-medium text-gray-500">ID:</span>
-                    <span class="text-xs font-semibold text-gray-800">3</span>
-                </div>
-            </div>
-
-            <hr class="my-2 border-gray-200">
-
-            <div class="flex justify-between items-center">
-                <div class="text-left">
-                    <span class="text-xs font-medium text-gray-500 block">Precio Referencial:</span>
-                    <span class="text-2xl font-extrabold text-green-600">$40</span>
-                </div>
-
-                <div class="text-right">
-                    <span class="text-xs font-medium block">Disponibilidad:</span>
-                    <span class="text-sm font-bold text-green-600">Disponible</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="max-w-xs bg-white border border-gray-200 rounded-xl shadow-lg overflow-hidden">
-
-        <div class="relative">
-            <img 
-                class="w-full h-40 object-cover" 
-                src="/assets/CabañaRustica.png" 
-                alt="Imagen de Alojamiento Cabaña Rústica">
-        </div> 
-        
-        <div class="p-4"> 
-            
-            <h2 class="text-xl font-bold text-gray-800 mb-1">
-                Alojamiento Cabaña Rústica
-            </h2>
-
-            <p class="text-gray-600 mb-3 text-xs leading-tight"> 
-                Una noche de alojamiento en una acogedora cabaña con vistas al mar.
-            </p>
-
-            <div class="space-y-1"> 
-                <div class="flex justify-between items-start pt-1 border-t border-gray-100">
-                    <span class="text-xs font-medium text-gray-500">Tipo / Destino:</span>
-                    <span class="text-xs font-semibold text-gray-800 text-right">Alojamiento / Salinas</span>
-                </div>
-
-                <div class="flex justify-between items-start">
-                    <span class="text-xs font-medium text-gray-500">Duración:</span>
-                    <span class="text-xs font-semibold text-gray-800">1 noche</span>
-                </div>
-
-                <div class="flex justify-between items-start pb-1">
-                    <span class="text-xs font-medium text-gray-500">ID:</span>
-                    <span class="text-xs font-semibold text-gray-800">4</span>
-                </div>
-            </div>
-
-            <hr class="my-2 border-gray-200">
-
-            <div class="flex justify-between items-center">
-                <div class="text-left">
-                    <span class="text-xs font-medium text-gray-500 block">Precio Referencial:</span>
-                    <span class="text-2xl font-extrabold text-green-600">$80</span>
-                </div>
-
-                <div class="text-right">
-                    <span class="text-xs font-medium block">Disponibilidad:</span>
-                    <span class="text-sm font-bold text-red-600">No Disponible</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<app-reviews/>

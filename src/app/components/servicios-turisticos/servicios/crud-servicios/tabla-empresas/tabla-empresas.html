@@ -1,0 +1,66 @@
+<button class="bg-(--color-secundario) mt-6 text-white px-5 py-2 rounded-lg font-medium cursor-pointer hover:bg-[#282828]"
+    >
+    Registrar Empresa
+</button>
+
+<div class="w-full grid gap-8 mt-6 mx-auto my-0">
+
+    <!--<input class="bg-[white] w-60 p-2.5 border-2 border-solid border-[black] rounded-[5px]" type="text"
+        placeholder="filtrar servicio..." #input (keyup)="buscar(input)">-->
+
+    <table
+        class="w-full mx-auto my-0 border-collapse border-spacing-0 rounded-[10px] border-2 border-solid border-[black];">
+        <thead>
+            <tr>
+                <th
+                    class="bg-(--color-secundario) text-[white] border text-left px-[15px] py-2.5 border-solid border-[#ccc];">
+                    ID
+                </th>
+                <th
+                    class="bg-(--color-secundario) text-[white] border text-left px-[15px] py-2.5 border-solid border-[#ccc];">
+                    Nombre</th>
+                <th
+                    class="bg-(--color-secundario) text-[white] border text-left px-[15px] py-2.5 border-solid border-[#ccc];">
+                    Ruc</th>
+                <th
+                    class="bg-(--color-secundario) text-[white] border text-left px-[15px] py-2.5 border-solid border-[#ccc];">
+                    Email</th>
+                <th
+                    class="bg-(--color-secundario) text-[white] border text-left px-[15px] py-2.5 border-solid border-[#ccc];">
+                    Telefono</th>
+                <th
+                    class="bg-(--color-secundario) text-[white] border text-left px-[15px] py-2.5 border-solid border-[#ccc];">
+                    Dirección</th>
+                <th
+                    class="bg-(--color-secundario) text-[white] border text-left px-[15px] py-2.5 border-solid border-[#ccc];">
+                    Servicios Ofrecidos</th>
+        </thead>
+
+        <tbody>
+            @for (empresa of empresas; track $index) {
+            <tr>
+                <td class="bg-[white] text-[1rem] font-medium border text-center p-3 border-solid border-[black]">{{ empresa.id }}
+                </td>
+                <td class="bg-[white] text-[1rem] font-medium border text-left p-3 border-solid border-[black]">{{ empresa.nombreEmpresa
+                    }}
+                </td>
+                <td class="bg-[white] text-[1rem] font-medium  border text-left p-3 border-solid border-[black]">{{
+                    empresa.ruc
+                    }}</td>
+                <td class="bg-[white] text-[1rem] font-medium  border text-left p-3 border-solid border-[black]">{{
+                    empresa.email
+                    }}</td>
+                <td class="bg-[white] text-[1rem] font-medium  border text-left p-3 border-solid border-[black]">{{
+                    empresa.telefono
+                    }}</td>
+                <td class="bg-[white] text-[1rem] font-medium  border text-left p-3 border-solid border-[black]">{{
+                    empresa.direccion
+                    }}</td>
+                <td class="bg-[white] text-[1rem] font-medium  border text-center p-3 border-solid border-[black]">{{
+                    empresa.serviciosOfrecidos }}
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
