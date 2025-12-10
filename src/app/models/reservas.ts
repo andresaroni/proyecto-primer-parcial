@@ -6,6 +6,6 @@ export interface Reservas {
     fechaReserva: string,
     cantidadPersonas: number,
     estado: string,
-    presupuestoTotal: number
+    precioReserva: number
 
 }

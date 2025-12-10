@@ -1,7 +1,4 @@
-<button
-    class="bg-(--color-secundario) mt-6 text-white px-5 py-2 rounded-lg font-medium cursor-pointer hover:bg-[#282828]">
-    Registrar Reservas
-</button>
+<h2 class="font-bold text-[1.5rem] pt-6">Reservas</h2>
 
 <div class="w-full grid gap-8 mt-6 mx-auto my-0 pb-20">
 
@@ -33,7 +30,7 @@
                     Estado</th>
                 <th
                     class="bg-(--color-secundario) text-[white] border text-left px-[15px] py-2.5 border-solid border-[#ccc];">
-                    Presupuesto Total</th>
+                    Precio Reserva</th>
         </thead>
 
         <tbody>
@@ -59,8 +56,8 @@
                 <td class="bg-[white] text-[1rem] font-medium  border text-left p-3 border-solid border-[black]">{{
                     reserva.estado
                     }}</td>
-                <td class="bg-[white] text-[1rem] font-medium  border text-left p-3 border-solid border-[black]">{{
-                    reserva.presupuestoTotal
+                <td class="bg-[white] text-[1rem] font-medium  border text-left p-3 border-solid border-[black]">${{
+                    reserva.precioReserva
                     }}</td>
             </tr>
             }

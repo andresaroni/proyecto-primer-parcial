@@ -10,7 +10,6 @@ import { Reviews } from "../../reviews/reviews";
 import { MatDialog } from '@angular/material/dialog';
 import { RegistroReserva } from './crud-servicios/registro-reserva/registro-reserva';
 
-
 export interface Servicio {
   id: number;
   nombre: string;
@@ -21,6 +20,7 @@ export interface Servicio {
   precioReferencial: number;
   disponibilidad: boolean;
 }
+
 
 @Component({
   selector: 'app-servicios',
@@ -47,19 +47,32 @@ export class ServiciosComponent {
     )
   }
 
-  openDialog(servicioParaEditar?: Servicio): void {
+  openDialog(servicioParaReservar?: Servicios): void { // CAMBIO AQUÍ: Cambia el tipo y el nombre
     const dialogRef = this.dialog.open(RegistroReserva, {
       width: '600px',
-      data: { servicio: servicioParaEditar }
+      data: { servicio: servicioParaReservar } // CAMBIO AQUÍ: Pasa el servicio completo
     });
+    
+    // Aquí puedes añadir la lógica para manejar el resultado de la reserva si es necesario
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        console.log('Reserva a registrar:', result);
+        // Lógica para registrar la reserva en el backend usando this.servicioTuri.postReserva(result)
+        this.registrarReserva(result);
+      }
+    });
+  }
 
-    dialogRef.afterClosed().subscribe(resultado => {
-      if (resultado) {
-        if (resultado.id) {
-          //this.actualizarServicio(resultado);
-        } else {
-          //this.registrarServicio(resultado);
-        }
+  registrarReserva(reserva: any): void {
+    this.servicioTuri.addReserva(reserva).subscribe({
+      next: (reservaCreada) => {
+        console.log('Reserva registrada exitosamente:', reservaCreada);
+        alert(`Reserva de ${reservaCreada.cantidadPersonas} personas realizada con éxito! ID: ${reservaCreada.id}`);
+        // Aquí podrías recargar la lista de servicios o reservas si fuera necesario
+      },
+      error: (error) => {
+        console.error('Error al registrar la reserva:', error);
+        alert('Hubo un error al intentar realizar la reserva. Revise la consola.');
       }
     });
   }

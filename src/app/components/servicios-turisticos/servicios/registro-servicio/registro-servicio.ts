@@ -45,10 +45,12 @@ export class RegistroServicio {
 
       this.servicioForm = this.fb.group({
         nombre: ['', Validators.required],
+        descripcion: ['', Validators.required],
         tipo: ['', Validators.required],
         destino: ['', Validators.required],
         duracion: ['', Validators.required],
-        precioReferencial: [0, [Validators.required, Validators.min(0.01)]],
+        precioReferencial: [null, [Validators.required, Validators.min(1)]],
+        empresaId: [null, [Validators.required, Validators.min(1)]],
         disponibilidad: [true, Validators.required],
         id: [null],
       });

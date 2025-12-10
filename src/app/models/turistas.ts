@@ -4,7 +4,6 @@ export interface Turistas {
     nombre: string,
     apellido: string,
     email: string,
-    nacionalidad: string,
-    reservasRealizadas: number[];
-
+    nacionalidad: string
+    
 }

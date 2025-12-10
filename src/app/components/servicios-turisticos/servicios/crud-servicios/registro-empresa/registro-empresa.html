@@ -1,0 +1,54 @@
+<h2 mat-dialog-title class="text-center">
+    <span class="font-semibold text-[1.8rem]">{{ titulo }}</span>
+</h2>
+
+<mat-dialog-content [formGroup]="servicioForm" class="p-6">
+
+    <div class="grid grid-cols-2 gap-4 mb-4">
+        <mat-form-field appearance="fill" class="w-full custom-input mb-4">
+            <mat-label>Nombre Empresa</mat-label>
+            <input matInput type="text" formControlName="nombreEmpresa">
+            <mat-error *ngIf="servicioForm.get('nombreEmpresa')?.hasError('required')">El nombre es obligatorio.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="w-full custom-input mb-4">
+            <mat-label>RUC</mat-label>
+            <input matInput type="text" formControlName="ruc">
+            <mat-error *ngIf="servicioForm.get('ruc')?.hasError('required')">El RUC es obligatorio.</mat-error>
+        </mat-form-field>
+    </div>
+
+    <div class="grid grid-cols-2 gap-4 mb-6">
+        <mat-form-field appearance="fill" class="w-full custom-input mb-4">
+            <mat-label>Email</mat-label>
+            <input matInput type="email" formControlName="email">
+            <mat-error *ngIf="servicioForm.get('email')?.hasError('required')">El email es obligatorio.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="w-full custom-input mb-4">
+            <mat-label>Teléfono</mat-label>
+            <input matInput type="text" formControlName="telefono">
+            <mat-error *ngIf="servicioForm.get('telefono')?.hasError('required')">El teléfono es obligatorio.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="w-full custom-input mb-4">
+            <mat-label>Dirección</mat-label>
+            <input matInput type="text" formControlName="direccion">
+            <mat-error *ngIf="servicioForm.get('direccion')?.hasError('required')">La dirección es obligatoria.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="w-full custom-input mb-4">
+            <mat-label>Servicio ID (Principal)</mat-label>
+            <input matInput type="number" formControlName="serviciosOfrecidos">
+            <mat-error *ngIf="servicioForm.get('serviciosOfrecidos')?.hasError('required')">Ingrese al menos un ID.</mat-error>
+        </mat-form-field>
+    </div>
+
+</mat-dialog-content>
+
+<mat-dialog-actions align="end" class="pt-4">
+    <button mat-button (click)="onCancelar()">Cancelar</button>
+    <button mat-raised-button color="primary" [disabled]="servicioForm.invalid" (click)="onGuardar()" class="custom-save-button">
+        Guardar Empresa
+    </button>
+</mat-dialog-actions>

@@ -26,6 +26,7 @@ import { MatSelectModule } from '@angular/material/select';
 export class RegistroReserva {
   servicioForm: FormGroup;
   titulo: string;
+  servicioSeleccionado: any;
   esModoRapido: boolean = false;
 
   constructor(
@@ -41,32 +42,45 @@ export class RegistroReserva {
         idBase: [null, Validators.required],
       });
     } else {
-      this.titulo = data && data.servicio ? 'Editar Servicio' : 'Registrar Nueva Reserva';
+      this.servicioSeleccionado = data && data.servicio ? data.servicio : null;
+      if (this.servicioSeleccionado) {
+        this.titulo = `Realizar Reserva: ${this.servicioSeleccionado.nombre}`;
+      } else {
+        this.titulo = data && data.servicio ? 'Editar Servicio' : 'Registrar Nueva Reserva';
+      }
 
       this.servicioForm = this.fb.group({
-        nombre: ['', Validators.required],
-        tipo: ['', Validators.required],
-        destino: ['', Validators.required],
-        duracion: ['', Validators.required],
-        cantidadPersonas: [0, [Validators.required, Validators.min(1)]],
+        servicioId: [this.servicioSeleccionado ? this.servicioSeleccionado.id : null, [Validators.required]],
         TuristaId: [0, [Validators.required, Validators.min(1)]],
+        fechaReserva: [null, [Validators.required]],
+        cantidadPersonas: [1, [Validators.required, Validators.min(1)]],
+        precioReferencial: [this.servicioSeleccionado ? this.servicioSeleccionado.precioReferencial : 0],
+        empresaId: [this.servicioSeleccionado ? this.servicioSeleccionado.empresaId : null],
         id: [null],
       });
 
-      if (data && data.servicio) {
-        this.servicioForm.patchValue(data.servicio);
-      }
     }
   }
 
-  onGuardar(): void {
+  onRegistrar(): void {
     if (this.servicioForm.valid) {
-      this.dialogRef.close(this.servicioForm.value);
+        const formValue = this.servicioForm.value;
+        const precioUnitario = formValue.precioReferencial;
+        const cantidad = formValue.cantidadPersonas;
+        const precioReserva = precioUnitario * cantidad;
+        const reserva: any = {
+            servicioId: formValue.servicioId,
+            turistaId: formValue.TuristaId,
+            fechaReserva: formValue.fechaReserva,
+            cantidadPersonas: cantidad,
+            estado: 'Pendiente',
+            precioReserva: precioReserva,
+        };
+        this.dialogRef.close(reserva);
     }
   }
 
   onCancelar(): void {
     this.dialogRef.close();
   }
-
 }
