@@ -77,10 +77,19 @@
                 <td class="bg-[white] text-[1rem] font-medium  border text-left p-3 border-solid border-[black]">{{
                     servicioTuri.empresaId
                     }}</td>
-                <td class="bg-[white] text-[1rem] font-medium  border text-left p-3 border-solid border-[black]">
-                    <i class='bx bxs-edit bx-sm'></i>
-                    <i class='bx bx-trash-alt bx-sm text-[Red]'></i>
-                    </td>
+                <td class="bg-[white] text-[1rem] font-medium border text-left p-3 border-solid border-[black]">
+                     <i 
+                        class='bx bxs-edit bx-sm cursor-pointer hover:text-[blue]' 
+                        (click)="editarServicio(servicioTuri)" 
+                            title="Editar servicio"
+                     ></i>
+
+                        <i 
+                            class='bx bx-trash-alt bx-sm text-[Red] cursor-pointer hover:text-[darkred]' 
+                            (click)="eliminarServicio(servicioTuri.id)" 
+                            title="Eliminar servicio"
+                        ></i>
+</td>
             </tr>
             }
         </tbody>
