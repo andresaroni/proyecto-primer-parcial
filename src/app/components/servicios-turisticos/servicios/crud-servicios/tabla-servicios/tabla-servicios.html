@@ -40,15 +40,20 @@
                 <th
                     class="bg-(--color-secundario) text-[white] border text-left px-[15px] py-2.5 border-solid border-[#ccc];">
                     EmpresaID</th>
+                <th
+                    class="bg-(--color-secundario) text-[white] border text-left px-[15px] py-2.5 border-solid border-[#ccc];">
+                    Acciones</th>
             </tr>
         </thead>
 
         <tbody>
             @for (servicioTuri of serviciosTuristicos; track $index) {
             <tr>
-                <td class="bg-[white] text-[1rem] font-medium border text-center p-3 border-solid border-[black]">{{ servicioTuri.id }}
+                <td class="bg-[white] text-[1rem] font-medium border text-center p-3 border-solid border-[black]">{{
+                    servicioTuri.id }}
                 </td>
-                <td class="bg-[white] text-[1rem] font-medium border text-left p-3 border-solid border-[black]">{{ servicioTuri.nombre
+                <td class="bg-[white] text-[1rem] font-medium border text-left p-3 border-solid border-[black]">{{
+                    servicioTuri.nombre
                     }}
                 </td>
                 <td class="bg-[white] text-[1rem] font-medium  border text-left p-3 border-solid border-[black]">{{
@@ -72,6 +77,10 @@
                 <td class="bg-[white] text-[1rem] font-medium  border text-left p-3 border-solid border-[black]">{{
                     servicioTuri.empresaId
                     }}</td>
+                <td class="bg-[white] text-[1rem] font-medium  border text-left p-3 border-solid border-[black]">
+                    <i class='bx bxs-edit bx-sm'></i>
+                    <i class='bx bx-trash-alt bx-sm text-[Red]'></i>
+                    </td>
             </tr>
             }
         </tbody>

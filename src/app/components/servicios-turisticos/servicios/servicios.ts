@@ -7,6 +7,8 @@ import { ServiciosTuristicos } from '../../../services/servicios/servicios-turis
 import { RouterLink } from "@angular/router";
 import { Navbar } from "../../navbar/navbar";
 import { Reviews } from "../../reviews/reviews";
+import { MatDialog } from '@angular/material/dialog';
+import { RegistroReserva } from './crud-servicios/registro-reserva/registro-reserva';
 
 
 export interface Servicio {
@@ -31,7 +33,7 @@ export class ServiciosComponent {
 
   serviciosTuristicos:Servicios[]=[];
 
-  constructor(private servicioTuri:ServiciosTuristicos) {}
+  constructor(private servicioTuri:ServiciosTuristicos, private dialog: MatDialog) {}
 
   ngOnInit() {
     this.cargarServicioTuristicos();
@@ -43,6 +45,23 @@ export class ServiciosComponent {
         this.serviciosTuristicos = data;
       }
     )
+  }
+
+  openDialog(servicioParaEditar?: Servicio): void {
+    const dialogRef = this.dialog.open(RegistroReserva, {
+      width: '600px',
+      data: { servicio: servicioParaEditar }
+    });
+
+    dialogRef.afterClosed().subscribe(resultado => {
+      if (resultado) {
+        if (resultado.id) {
+          //this.actualizarServicio(resultado);
+        } else {
+          //this.registrarServicio(resultado);
+        }
+      }
+    });
   }
 
 }
